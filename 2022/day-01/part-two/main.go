@@ -44,9 +44,7 @@ func main() {
 			temp = scanner.Text()
 
 		}
-
 	}
 
 	fmt.Printf("Those elves are carrying a total of %d calories", firstMax + secondMax + thirdMax)
-
 }

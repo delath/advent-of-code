@@ -33,9 +33,7 @@ func main() {
 			temp = scanner.Text()
 
 		}
-
 	}
 
 	fmt.Printf("Elf is carrying %d calories", max)
-
 }
