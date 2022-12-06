@@ -19,7 +19,7 @@ func main() {
 			sum++
 		}
 
-		fmt.Scanf("%c",&temp)
+		fmt.Scanf("%c", &temp)
 		if temp == 13 {
 			break
 		}
