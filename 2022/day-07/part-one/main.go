@@ -5,7 +5,7 @@ import (
 	"strconv"
 )
 
-// it is currently needed that a tilde (~) is passed at the of the input
+// it is currently needed that a tilde (~) is passed at the end of the input
 // this will be fixed in the future
 func main() {
 	var temp byte
@@ -16,7 +16,7 @@ func main() {
 
 	trueTotal := 0
 
-	parentDir:=resolveDir(&trueTotal, &endReached) // I NEED TO CHECK THIS DIRECTORY TOOO
+	parentDir:=resolveDir(&trueTotal, &endReached)
 	if parentDir <= 100000 {
 		trueTotal+=parentDir
 	}
