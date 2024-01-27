@@ -20,7 +20,7 @@ func main() {
 	scanner := bufio.NewScanner(os.Stdin)
 
 	// there is a better way to handle input, i used it in the latest challenges solved with golang
-	for scanner.Scan() { // until end of input. (you can force it with ctrl+Z or ctrl+D)
+	for scanner.Scan() { // until interrupt key
 		temp = scanner.Text()
 		
 		if strings.Compare(temp,"\n") == -1 { // end of elf detected

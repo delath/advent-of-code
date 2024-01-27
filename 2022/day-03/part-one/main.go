@@ -13,7 +13,7 @@ func main() {
 
 	scanner := bufio.NewScanner(os.Stdin)
 
-	for scanner.Scan() { // until end of input, you can force it with ctrl+Z or ctrl+D.
+	for scanner.Scan() { // until interrupt key
 		contents = scanner.Text()
 		
 		if !(strings.Compare(contents,"\n") == -1) { // new line

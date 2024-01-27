@@ -14,7 +14,7 @@ func main() {
 
 	reader := bufio.NewReader(os.Stdin)
 
-	for endChecker!=13 { // until end of input, you can force it with ctrl+Z or ctrl+D at the end of your input.
+	for endChecker!=13 { // until interrupt key
 
 		opponent,_,_ = reader.ReadRune()
 		reader.ReadRune()

@@ -13,7 +13,7 @@ func main() {
 	var temp byte
 	sum := 0
 
-	for { // until end of input, you can force it with ctrl+Z or ctrl+D.
+	for { // until interrupt key
 		fmt.Scanf("%d-%d,%d-%d", &beginFirst, &endFirst, &beginSecond, &endSecond)
 
 		if (beginFirst >= beginSecond && beginFirst <= endSecond) || (endFirst >= beginSecond && endFirst <= endSecond) || (beginSecond >= beginFirst && beginSecond <= endFirst) {
