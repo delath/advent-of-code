@@ -8,11 +8,14 @@ int main(){
     int i, j;
     int temp;
     char bit;
+
     for(i=0;i<BITS;i++){
         ones[i]=0;
         zeros[i]=0;
     }
+
     scanf("%c", &bit);
+
     while(!feof(stdin)){
         for(i=0;i<BITS;i++){
             if(bit=='1')
@@ -23,6 +26,7 @@ int main(){
         }
         scanf("%c", &bit);
     }
+
     for(i=0;i<BITS;i++){
         if(ones[i]>zeros[i]){
             sol[i]=1;
@@ -30,6 +34,7 @@ int main(){
             sol[i]=0;
         }
     }
+    
     for(i=0;i<BITS;i++){
         if(i==0 && sol[BITS-1-i]==1){
             gamma++;
@@ -48,6 +53,7 @@ int main(){
             }
         }
     }
+
     printf("%d\n", gamma*epsilon);
     return 0;
 }

@@ -12,24 +12,30 @@ int main(){
     bool win=0;
     int sum=0;
     int i, j, k;
+
     for(i=0;i<LOT;i++){
         scanf("%d", &extracted[i]);
         if(i!=99){
             getchar();
         }
     }
+
     while(!feof(stdin)){
+
         for(i=0;i<SIZE;i++){
             for(j=0;j<SIZE;j++){
                 flag[i][j]=0;
             }
         }
+
         for(i=0;i<SIZE;i++){
             for(j=0;j<SIZE;j++){
                 scanf("%d", &board[i][j]);
             }
         }
+
         for(k=0;k<LOT;k++){
+
             for(i=0;i<SIZE;i++){
                 for(j=0;j<SIZE;j++){
                     if(board[i][j]==extracted[k]){
@@ -37,6 +43,7 @@ int main(){
                     }
                 }
             }
+
             for(i=0;i<SIZE;i++){
                 for(j=0;j<SIZE;j++){
                     if(flag[i][j]==0){
@@ -47,6 +54,7 @@ int main(){
                     }
                 }
             }
+
             for(i=0;i<SIZE;i++){
                 for(j=0;j<SIZE;j++){
                     if(flag[j][i]==0){
@@ -57,12 +65,15 @@ int main(){
                     }
                 }
             }
+
             if(win){
                 break;   
             }
         }
+
         if(temp>rounds){
             rounds=temp;
+
             for(i=0;i<SIZE;i++){
                 for(j=0;j<SIZE;j++){
                     if(flag[i][j]==0){
@@ -70,12 +81,14 @@ int main(){
                     }
                 }
             }
+            
             printf("sum %d e ultimo %d", sum, extracted[rounds]);
             output=sum*extracted[rounds];
         }
         sum=0;
         win=0;
     }
+
     printf("%d\n", output);
     return 0;
 }

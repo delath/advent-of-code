@@ -6,10 +6,13 @@ int main(){
     int i;
     long sum=0;
     char input;
+
     for (i = 0; i < 9; i++) {
         fishes[i]=0;
     }
+
     scanf("%c", &input);
+
     while (input != '\n') {
         if (input == '0')
             fishes[0]++;
@@ -32,6 +35,7 @@ int main(){
 
         scanf("%c", &input);
     }
+
     for(i=0;i<DAYS;i++){
         temp=fishes[0];
         fishes[0]=fishes[1];
@@ -44,9 +48,11 @@ int main(){
         fishes[7]=fishes[8];
         fishes[8]=temp;
     }
+
     for(i=0;i<9;i++){
         sum+=fishes[i];
     }
+    
     printf("%ld\n", sum);
     return 0;
 }

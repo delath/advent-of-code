@@ -5,7 +5,9 @@ int main(){
     int position=0;
     int temp;
     int i;
+    
     input=getchar();
+
     while(!feof(stdin)){
         switch(input){
             case 'f':
@@ -35,6 +37,7 @@ int main(){
         }
         input=getchar();
     }
+
     printf("%d\n", depth*position);
     return 0;
 }

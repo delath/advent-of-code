@@ -5,12 +5,15 @@ int main(){
     int oldSum;
     int cont=0;
     int flag=0;
+
     for(int i=0;i<3;i++){
         scanf("%d", &values[i]);
         newSum+=values[i];
     }
+
     while(!feof(stdin)){
         oldSum=newSum;
+
         switch(flag){
             case 0:
                 newSum-=values[0];
@@ -31,10 +34,12 @@ int main(){
                 flag=0;
                 break;
         }
+        
         if(newSum>oldSum){
             cont++;
         }
     }
+
     printf("%d increases\n", cont);
     return 0;
 }
