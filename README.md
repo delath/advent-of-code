@@ -2,7 +2,7 @@
 
 ![Advent of Code Banner](https://i.imgur.com/KIwtDvb.png)
 
-This repository contains my solutions to the [Advent of Code](https://adventofcode.com/events) challenges using multiple programming languages. Feel free to explore and learn from my solutions, keep in mind that this repo is for reference only and not for contributions.
+This repository contains my solutions to the [Advent of Code](https://adventofcode.com/events) challenges.
 
 ## Repo Structure
 
