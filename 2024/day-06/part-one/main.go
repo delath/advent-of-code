@@ -52,7 +52,7 @@ func main() {
 				direction='v'
 			} else {
 				floor[xGuard][yGuard] = 'X'
-				yGuard++	
+				yGuard++
 			}
 		} else if direction == 'v' {
 			if xGuard+1 >= len(floor) {
@@ -63,7 +63,7 @@ func main() {
 				direction='<'
 			} else {
 				floor[xGuard][yGuard] = 'X'
-				xGuard++	
+				xGuard++
 			}
 		} else if direction == '<' {
 			if yGuard-1 < 0 {
@@ -74,7 +74,7 @@ func main() {
 				direction='^'
 			} else {
 				floor[xGuard][yGuard] = 'X'
-				yGuard--	
+				yGuard--
 			}
 		}
 	}
