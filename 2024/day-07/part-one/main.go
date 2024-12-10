@@ -2,6 +2,7 @@ package main
 
 import (
 	"bufio"
+	"fmt"
 	"os"
 	"regexp"
 	"strconv"
@@ -13,8 +14,9 @@ func main() {
 	defer file.Close()
 
 	scanner := bufio.NewScanner(file)
-
 	re := regexp.MustCompile(`\d+`)
+
+	calibrationSum := 0
 
 	// Parse the file line by line
 	for scanner.Scan() {
@@ -22,7 +24,7 @@ func main() {
 
 		parts := strings.Split(line, ":")
 
-		result, _ := strconv.Atoi(parts[0])
+		target, _ := strconv.Atoi(parts[0])
 		numberStrings := re.FindAllString(parts[1], -1)
 
 		var numbers []int
@@ -31,40 +33,28 @@ func main() {
 			numbers = append(numbers, num)
 		}
 
-		operations := make([]rune, len(numbers)-1)
-		for i := range operations {
-			operations[i] = '+'
-		}
-
-		isValid := false
-
-		for {
-			temporaryResult := 0
-
-			for i := 0; i < len(operations); i++ {
-				if operations[i] == '+' {
-					temporaryResult += numbers[i] + numbers[i+1]
-				} else if operations[i] == '*' {
-					temporaryResult += numbers[i] * numbers[i+1]
-				}
-			}
-
-			if temporaryResult == result {
-				isValid = true
-				break
-			}
-
-			// add a single multiplier
-			i := 0
-			for {
-				if operations[i+1] == '*' || i == len(operations)-1 {
-					operations[i] = '*'
-					break
-				}
-				i++
-			}
-
+		if evaluate(numbers, target, 0, numbers[0]) {
+			calibrationSum += target
 		}
 	}
 
+	fmt.Println(calibrationSum)
+}
+
+func evaluate(numbers []int, target, index, current int) bool {
+	if index == len(numbers)-1 {
+		return current == target
+	}
+
+	// Addition
+	if evaluate(numbers, target, index+1, current+numbers[index+1]) {
+		return true
+	}
+
+	// Multiplication
+	if evaluate(numbers, target, index+1, current*numbers[index+1]) {
+		return true
+	}
+
+	return false
 }

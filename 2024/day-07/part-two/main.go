@@ -2,7 +2,11 @@ package main
 
 import (
 	"bufio"
+	"fmt"
 	"os"
+	"regexp"
+	"strconv"
+	"strings"
 )
 
 func main() {
@@ -10,11 +14,64 @@ func main() {
 	defer file.Close()
 
 	scanner := bufio.NewScanner(file)
+	re := regexp.MustCompile(`\d+`)
+
+	calibrationSum := 0
 
 	// Parse the file line by line
 	for scanner.Scan() {
 		line := scanner.Text()
 
+		parts := strings.Split(line, ":")
+
+		target, _ := strconv.Atoi(parts[0])
+		numberStrings := re.FindAllString(parts[1], -1)
+
+		var numbers []int
+		for _, numStr := range numberStrings {
+			num, _ := strconv.Atoi(numStr)
+			numbers = append(numbers, num)
+		}
+
+		if evaluate(numbers, target, 0, numbers[0]) {
+			calibrationSum += target
+		}
 	}
 
+	fmt.Println(calibrationSum)
+}
+
+func evaluate(numbers []int, target, index, current int) bool {
+	if index == len(numbers)-1 {
+		return current == target
+	}
+
+	// Addition
+	if evaluate(numbers, target, index+1, current+numbers[index+1]) {
+		return true
+	}
+
+	// Multiplication
+	if evaluate(numbers, target, index+1, current*numbers[index+1]) {
+		return true
+	}
+
+	// Concatenation
+	concat := concatNumbers(current, numbers[index+1])
+	if evaluate(numbers, target, index+1, concat) {
+		return true
+	}
+
+	return false
+}
+
+func concatNumbers(a, b int) int {
+	strA := strconv.Itoa(a)
+	strB := strconv.Itoa(b)
+
+	concatStr := strA + strB
+
+	concatInt, _ := strconv.Atoi(concatStr)
+
+	return concatInt
 }
