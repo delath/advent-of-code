@@ -24,23 +24,23 @@ func main() {
 	}
 
 	blockId := 0
-	for i := 0; i < len(line); i = i + 2 {
-		if i < len(line) {
+	isBlockSize := true
+	for i := 0; i < len(line); i++ {
+		if isBlockSize {
 			blockSize := int(line[i] - '0')
 			for j := 0; j < blockSize; j++ {
 				newLine = append(newLine, uint64(blockId))
 			}
-		}
-
-		if i+1 < len(line) {
-			freeSpace := int(line[i+1] - '0')
+			isBlockSize = false
+			blockId++
+		} else {
+			freeSpace := int(line[i] - '0')
 			for j := 0; j < freeSpace; j++ {
 				newLine = append(newLine, uint64('.'))
 
 			}
+			isBlockSize = true
 		}
-
-		blockId++
 	}
 
 	isParsed := false
