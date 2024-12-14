@@ -11,7 +11,7 @@ func main() {
 
 	scanner := bufio.NewScanner(file)
 
-	var newLine []uint64
+	var newLine []int64
 	var checksum uint64
 	var line string
 
@@ -25,14 +25,14 @@ func main() {
 		if isBlockSize {
 			blockSize := int(line[i] - '0')
 			for j := 0; j < blockSize; j++ {
-				newLine = append(newLine, uint64(blockId))
+				newLine = append(newLine, int64(blockId))
 			}
 			isBlockSize = false
 			blockId++
 		} else {
 			freeSpace := int(line[i] - '0')
 			for j := 0; j < freeSpace; j++ {
-				newLine = append(newLine, uint64('.'))
+				newLine = append(newLine, int64(-1))
 
 			}
 			isBlockSize = true
@@ -41,28 +41,28 @@ func main() {
 
 	isParsed := false
 	for i := 0; i < len(newLine) && !isParsed; i++ {
-		if newLine[i] != uint64('.') {
+		if newLine[i] != int64(-1) {
 			continue
 		}
 		for j := len(newLine) - 1; j >= 0 && !isParsed; j-- {
 			if i >= j {
 				isParsed = true
 			}
-			if newLine[j] == uint64('.') || i >= j {
+			if newLine[j] == int64(-1) || i >= j {
 				continue
 			}
 			newLine[i] = newLine[j]
-			newLine[j] = uint64('.')
+			newLine[j] = int64(-1)
 			break
 		}
 	}
 
 	for i := 0; i < len(newLine); i++ {
-		if newLine[i] == uint64('.') {
+		if newLine[i] == int64(-1) {
 			break
 		}
 
-		checksum += (newLine[i] * uint64(i))
+		checksum += uint64(newLine[i]) * uint64(i)
 	}
 
 	print(checksum)
