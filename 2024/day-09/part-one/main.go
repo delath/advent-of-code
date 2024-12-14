@@ -5,10 +5,6 @@ import (
 	"os"
 )
 
-type Coordinate struct {
-	X, Y int
-}
-
 func main() {
 	file, _ := os.Open("input.txt")
 	defer file.Close()
