@@ -66,7 +66,7 @@ func main() {
 			continue
 		} else {
 			freeSpaces := 0
-			for j := 0; j < len(newLine) && j < i; j++ {
+			for j := 0; j < len(newLine) && j <= i; j++ {
 				if newLine[j] != int64(-1) {
 					freeSpaces = 0
 					continue
