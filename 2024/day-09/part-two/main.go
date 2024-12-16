@@ -83,17 +83,6 @@ func main() {
 			occurrences = 0
 			blockId--
 		}
-		/*for j := len(newLine) - 1; j >= 0 && !isParsed; j-- {
-			if i >= j {
-				isParsed = true
-			}
-			if newLine[j] == int64(-1) || i >= j {
-				continue
-			}
-			newLine[i] = newLine[j]
-			newLine[j] = int64(-1)
-			break
-		}*/
 	}
 
 	for i := 0; i < len(newLine); i++ {
