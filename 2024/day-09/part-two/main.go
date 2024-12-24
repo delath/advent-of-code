@@ -66,7 +66,7 @@ func main() {
 			continue
 		} else {
 			freeSpaces := 0
-			for j := 0; j < len(newLine) && j < i; j++ {
+			for j := 0; j < len(newLine) && j <= i; j++ {
 				if newLine[j] != int64(-1) {
 					freeSpaces = 0
 					continue
@@ -83,17 +83,6 @@ func main() {
 			occurrences = 0
 			blockId--
 		}
-		/*for j := len(newLine) - 1; j >= 0 && !isParsed; j-- {
-			if i >= j {
-				isParsed = true
-			}
-			if newLine[j] == int64(-1) || i >= j {
-				continue
-			}
-			newLine[i] = newLine[j]
-			newLine[j] = int64(-1)
-			break
-		}*/
 	}
 
 	for i := 0; i < len(newLine); i++ {
